@@ -6,7 +6,7 @@
 /*   By: mtoktas <mtoktas@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 19:08:37 by mtoktas           #+#    #+#             */
-/*   Updated: 2023/09/10 20:00:52 by mtoktas          ###   ########.fr       */
+/*   Updated: 2023/09/13 13:07:31 by mtoktas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	handlesignal(int sign)
 	static int	set;
 
 	if (sign == SIGUSR1)
-		set += 1 << bit;
+		set = set + (1 << bit);
 	if (bit == 7)
 	{
 		write(1, &set, 1);
@@ -61,5 +61,5 @@ int	main(int ac, char **av)
 			pause();
 	}
 	else
-		printf("No need argument.\n");
+		write(2, "No need argument.\n", 18);
 }
